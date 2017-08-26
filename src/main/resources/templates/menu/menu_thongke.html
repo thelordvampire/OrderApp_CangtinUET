@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+<!--        <link rel="stylesheet" type="text/css"
+            th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />-->
+        
+        <link rel="stylesheet" th:href="@{/css/jquery.rateyo.min.css}" />
+        
+        <link th:href="@{/thai/css/bootstrap1.min.css}" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link th:href="@{/thai/css/statistic.css}" rel="stylesheet">
+    </head>
+    <body class="fixed-nav" id="page-top">
+        
+        <!-- Navigation -->
+     <th:block th:replace="user/admin_left ::admin_left"></th:block>   
+        
+        
+    <div class="content-wrapper py-3">
+        <div class="container-fluid">
+            <!-- Breadcrumbs -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Thống kê</li>
+            </ol>
+        
+        <!-- Foods list -->
+        <div class="card mb-3">
+          <div class="card-header text-center">
+            <strong>THỐNG KÊ THỰC ĐƠN</strong>
+          </div>
+
+          <div>
+            <div class="card-body">
+            	<form action="#" th:action="@{/admin/menu/thongke}" method="POST">
+                    <div class="col-lg-3" style="margin: 0 auto;">
+                        <div class="input-group">
+                            <input type="text" class="form-control col-md-12" 
+                                 placeholder="d-M-yyyy" aria-label="Search for..."
+                                 name="dayName" 
+                                 th:value="${day != null and day !=''}? ${#dates.format(day,'d-M-yyyy')} : ''"/>
+                            <span class="input-group-btn">
+                                <input class="btn btn-secondary" 
+                                       type="submit" value="Tìm kiếm"/>
+                            </span>
+                        </div>
+                     </div>
+                </form>
+            </div>
+           
+        <th:block th:if="${menu!=null}">
+            <div class="row">
+            	<div class="col-lg-8">
+                    <div class="text-center card-body">
+                        <ul>
+                        <li class="showFood" th:each="dish : ${menu.dishes}" style="float:left"> 
+                            <img th:src="${dish.image_link_to_show}" 
+                                alt="" style="border-radius: 50%;
+                                width: 50px; height: 50px"/>
+                            <span class="display-food"
+                                th:text="${dish.name}"></span>
+                            <span th:text="${dish.countInMenu}+' người'"></span>
+                        </li>
+                        </ul>
+                    </div>
+            	</div>
+
+            	<!-- Đánh giá -->
+            	<div class="col-lg-4">
+                    <div class="card-header">
+                        <h5>Đánh giá:</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-action">
+                                <div class="rateYo" data-rateyo-rating="5" 
+                                     data-rateyo-read-only="true" 
+                                     style="display: inline-block">
+                                </div> 
+                                <strong>
+                                    <span th:text="${rate5}"></span>
+                                </strong> người
+                            </li>
+                            <li class="list-group-item list-group-item-action">
+                                <div class="rateYo" data-rateyo-rating="4" 
+                                     data-rateyo-read-only="true" 
+                                     style="display: inline-block">
+                                </div> 
+                                <strong>
+                                    <span th:text="${rate4}"></span>
+                                </strong> người
+                            </li>
+                            <li class="list-group-item list-group-item-action">
+                                <div class="rateYo" data-rateyo-rating="3" 
+                                    data-rateyo-read-only="true" 
+                                    style="display: inline-block">
+                                </div> 
+                                <strong>
+                                    <span th:text="${rate3}"></span>
+                                </strong> người
+                            </li>
+                            <li class="list-group-item list-group-item-action">
+                                <div class="rateYo" data-rateyo-rating="2" 
+                                    data-rateyo-read-only="true" 
+                                     style="display: inline-block">
+                                </div> 
+                                <strong>
+                                    <span th:text="${rate2}"></span>
+                                </strong> người
+                            </li>
+                            <li class="list-group-item list-group-item-action">
+                                <div class="rateYo" data-rateyo-rating="1" 
+                                    data-rateyo-read-only="true" 
+                                    style="display: inline-block">
+                                </div> 
+                                <strong>
+                                    <span th:text="${rate1}"></span>
+                                </strong> người
+                            </li>
+                            <li class="list-group-item list-group-item-action">
+                                <div class="rateYo" data-rateyo-rating="0" 
+                                     data-rateyo-read-only="true" 
+                                     style="display: inline-block">
+                                </div> 
+                                <strong>
+                                    <span th:text="${rate0}"></span>
+                                </strong> người
+                            </li>
+                        </ul>
+                            </div>
+                        </div>
+                    </div> 
+                </th:block>  
+            </div>
+        </div>
+        
+        <hr class="mt-4"/>
+        <th:block th:if="${menu!=null}">  
+            <!-- Register Customer -->
+        <div class="card mb-3">
+          <div class="card-header text-center">
+            <strong>Danh Sách Khách Hàng Đăng Ký Ăn</strong>
+          </div>
+
+          <div>
+            <div class="card-body">
+            	<table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên</th>
+                            <th>Giá tiền</th>
+                            <th>Thông tin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="order,i : ${menu.orders}">
+                            <th scope="row" th:text="${i.count}"></th>
+                            <td th:text="${order.user.name}"></td>
+                            <td th:text="${#numbers.formatInteger(order.price,3,'POINT')}"></td>
+                            <td th:text="${order.infor}"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Tổng tiền</td>
+                            <td th:text="${#numbers.formatInteger(totalPrice,3,'POINT')}">
+                            </td>
+                        </tr>
+                        
+                        
+<!--                        <tr th:each="order : ${menu.orders}">
+                            <td th:text="${order.user.name}"></td>
+                            <td th:text="${order.price}"></td>
+                            <td th:text="${order.infor}"></td>
+                        </tr>
+                        <tr>
+                            <td>Tổng tiền</td>
+                            <td th:text="${totalPrice}"></td>
+                        </tr>-->
+                        
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+        
+        </th:block>  
+        
+        <div th:if="${menu==null and day!=null and day!=''}" >
+            Không tìm thấy thực đơn của ngày <span th:text="${#dates.format(day,'dd-M-yyyy')}"></span>
+        </div>
+        
+        
+        </div>
+    </div>
+        
+        
+        <th:block th:replace="user/admin_bottom ::admin_bottom"></th:block>  
+        
+<!--        <div >
+            <div>Đây là trang thông kê thực đơn</div>
+            <form action="#" th:action="@{/admin/menu/thongke}" method="POST">
+                <input type="text" placeholder="Nhập ngày muốn tìm" name="dayName"
+                       th:value="${day != null and day !=''}? ${#dates.format(day,'d-M-yyyy')} : ''"/>
+                <input type="submit" value="Tìm kiếm"/>
+            </form>
+
+                        <p th:text="${day}"></p>
+            <input type="text" th:value="${#dates.format(day)}"/>
+           <div th:if="${menu!=null}" >
+               <div th:each="dish : ${menu.dishes}" style="display: inline-block">
+                    <img th:src="${dish.image_link_to_show}" style="border-radius: 50%; width: 50px; height: 50px"/>
+                    <span th:text="${dish.name}"></span>
+                    <span th:text="${dish.countInMenu}"></span>
+               </div>
+               <br/>
+               
+               <div class="rateYo" data-rateyo-rating="5" 
+                    data-rateyo-read-only="true" style="display: inline-block"></div>
+                    <span th:text="${rate5}"></span>
+               <br/>
+               
+               <div class="rateYo" data-rateyo-rating="4" 
+                    data-rateyo-read-only="true" style="display: inline-block"></div>
+                    <span th:text="${rate4}"></span>
+               <br/>
+               
+               <div class="rateYo" data-rateyo-rating="3" 
+                    data-rateyo-read-only="true" style="display: inline-block"></div>
+                    <span th:text="${rate3}"></span>
+               <br/>
+               
+               <div class="rateYo" data-rateyo-rating="2" 
+                    data-rateyo-read-only="true" style="display: inline-block"></div>
+                    <span th:text="${rate2}"></span>
+               <br/>
+               
+               <div class="rateYo" data-rateyo-rating="1" 
+                    data-rateyo-read-only="true" style="display: inline-block"></div>
+                    <span th:text="${rate1}"></span>
+               <br/>
+               
+               <div class="rateYo" data-rateyo-rating="0" 
+                    data-rateyo-read-only="true" style="display: inline-block"></div>
+                    <span th:text="${rate0}"></span>
+               <br/>
+               <div th:value="#obj"></div>
+               
+               <th:block th:if="${menu.orders ==null or #lists.isEmpty(menu.orders)}">
+                    Chưa có đăng ký ăn nào
+                </th:block>
+                <th:block th:if="${menu.orders !=null and not #lists.isEmpty(menu.orders)}">
+                    Danh sách đăng ký ăn
+                    <table>
+                        <tr>
+                            <td>Tên</td>
+                            <td>Giá tiền</td>
+                            <td>Thông tin</td>
+                        </tr>
+                        <tr th:each="order : ${menu.orders}">
+                            <td th:text="${order.user.name}"></td>
+                            <td th:text="${order.price}"></td>
+                            <td th:text="${order.infor}"></td>
+                        </tr>
+                        <tr>
+                            <td>Tổng tiền</td>
+                            <td th:text="${totalPrice}"></td>
+                        </tr>
+                   </table>
+                </th:block>
+               
+               
+               
+            </div>
+            <div th:if="${menu==null and day!=null and day!=''}" >
+                Không tìm thấy thực đơn của ngày <span th:text="${#dates.format(day,'dd-M-yyyy')}"></span>
+            </div>
+                
+        </div>-->
+        
+        
+        
+<!--        <script type="text/javascript"
+        th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>-->
+        
+       
+    
+    
+        <!-- Bootstrap core JavaScript -->
+        <script th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+        <script th:src="@{/thai/js/popper.min.js}"></script>
+        <script th:src="@{/thai/js/bootstrap.min.js}"></script>
+
+        <!-- Plugin JavaScript -->
+        <script th:src="@{/thai/js/jquery.easing.min.js}"></script>
+
+        <!-- Custom scripts for this template -->
+        <script th:src="@{/thai/js/sb-admin.min.js}"></script>
+        
+        
+         <script type="text/javascript"
+        th:src="@{/js/jquery.rateyo.min.js}"></script>
+        
+        <script type="text/javascript"
+        th:src="@{/js/rate_default.js}"></script>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>JSP Page</title>
+    </head>
+    <body>
+<!--        <th:block th:fragment="RegisterOrderForm" th:if="${menu !=null}">
+            <p th:text="${menu.day}" name="day" id="day"></p>
+            <table>
+                <tr>
+                    <td>Tên</td>
+                    <td>Thông tin</td>
+                    <td>Chọn</td>
+                </tr>
+                <tr th:each="dish : ${menu.dishes}">
+                    <td th:text="${dish.name}"></td>
+                    <td th:text="${dish.infor}"></td>
+                    <td> <input type="checkbox" name="dishes" th:value="${dish.id}"/></td>
+                </tr>
+            </table>
+            <input type="radio" name="price" value="20000"/> 20000
+            <input type="radio" name="price" value="30000"/> 30000
+            <input type="radio" name="price" value="40000"/> 40000
+            <br/>
+            <textarea placeholder="Thời gian, địa điểm" name="infor"></textarea>
+            <div id="message"></div>
+
+            <input type="button" id="btnOrderRegister" value="Xác nhận" onclick="order_register()"/>
+        </th:block>-->
+    
+        <th:block th:fragment="RegisterOrderForm" th:if="${menu !=null}">
+            <div class="text-center">
+                <button onclick="orderPrevious()">
+                    <img th:src="@{/thai/Img/previous.png}" alt="">
+                </button>
+                <label class="text-center" style="display: inline-block">
+                    Ngày 
+                    <strong>
+                        <span th:text="${#dates.format(menu.day,'d-M-yyyy')}"
+                            name="day" id="day"></span>
+                    </strong>
+                </label>
+                <button onclick="orderNext()">
+                    <img th:src="@{/thai/Img/next.png}" alt="">
+                </button>
+            </div>
+            <hr/>
+              
+            <input type="hidden" id="menuDay" th:value="${menu.day}" />
+<!--            <table class="table table-bordered" id="table">
+                <tr>
+                    <th class="btn-th text-center">Ảnh</th>
+                    <th class="btn-th text-center" id="first-th">Tên</th>
+                    <th class="btn-th text-center">Thông tin</th>
+                    <th class="btn-th text-center" id="last-th">Chọn</th>
+                </tr>
+                                <tr>
+                    <td class="">Ảnh</td>
+                    <td class="">Tên</td>
+                    <td class="">Thông tin</td>
+                    <td class="text-center">Chọn</td>
+                </tr>
+
+                <tr th:each="dish : ${menu.dishes}">
+                    <td class="">
+                        <img th:src="${dish.image_link_to_show}" style="width: 50px; height: 50px;"/>
+                    </td>
+                    <td class="" th:text="${dish.name}"></td>
+                    <td class="" th:text="${dish.infor}"></td>
+                    <td class="text-center"> <input type="checkbox" name="dishes" th:value="${dish.id}"/></td>
+                </tr>
+            </table>-->
+            
+                <!-- **************************************
+                ************************************
+                căn lề trái chỗ này  -->
+            Thực đơn gồm có:
+            <br/>
+            <div th:each="dish : ${menu.dishes}" style="width: 200px; 
+                 display: inline-block;" class="DetailMenuDish">
+                <img th:src="${dish.image_link_to_show}" style="border-radius: 50%; width: 50px; height: 50px;"/>
+                <span th:text="${dish.name}"></span>
+                <!--<input type="checkbox" name="dishes" th:value="${dish.id}"/>-->
+                <input type="hidden" name="dishHidden" th:value="${dish.id}"/>
+            </div>
+            
+            <!-- **************************************
+                ************************************
+                căn lề trái chỗ này  -->
+            
+            <div style="display: none;" class="fast_dish_detail">abc</div>
+            <br/>
+           
+
+            <div class="radio text-center">
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="20000"/> Suất 20.000
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="25000"/> Suất 25.000
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="30000"/> Suất 30.000
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="40000"/> Suất 40.000
+                </label>
+            </div>
+            <div class="prevent-overflow text-center">
+                <div class="col-md-6 mb-3" id="test">
+                    <label for="validationServer01">Ghi chú</label>
+                    <textarea class="form-control is-valid"  placeholder="Thời gian, địa điểm" name="infor"></textarea>
+                </div>
+                <div class="text-center" id="message"></div>
+                <br/>
+                <input class="btn" type="button" id="btnOrderRegister" value="Xác nhận" onclick="order_register()"/>
+            </div>
+
+            <script type="text/javascript"  th:src="@{/js/order_register.js}"></script>
+            <script type="text/javascript"  th:src="@{/js/create_order_message.js}"></script>
+            <script type="text/javascript"  th:src="@{/js/show_fast_dish_detail.js}"></script>
+            <script type="text/javascript"  th:src="@{/js/choose_dish.js}"></script>
+        </th:block>
+
+    </body>
+</html>
+    
+

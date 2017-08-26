@@ -1,0 +1,37 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Đây la trang xem thực đơn</h1>
+        <div th:if="${menu ==null}">Không có thực đơn nào</div>
+        
+        <div th:if="${menu !=null}">
+            <input type="button" value="Trước" id="btnOrderPrevious"/>
+            <input type="button" value="Sau" id="btnOrderNext"/>
+            <div id="OrderForm">
+                <th:block th:if="${order != null}">
+                    <th:block th:include="order/detail ::EditOrderForm"></th:block>
+                </th:block>
+                
+                <th:block th:if="${order == null}">
+                    <th:block th:include="order/register ::RegisterOrderForm"></th:block>
+                </th:block>
+                
+                <!--<div th:if="${order != null}" th:replace="order/detail ::EditOrderForm"></div>-->
+            </div>
+        </div>
+
+        <script type="text/javascript"
+        th:src="@{/webjars/jquery/2.2.4/jquery.min.js}"></script>
+        
+       <script type="text/javascript"  th:src="@{/js/order_register.js}"></script>
+       <script type="text/javascript"  th:src="@{/js/order_update.js}"></script>
+       <script type="text/javascript"  th:src="@{/js/order_delete.js}"></script>
+       <script type="text/javascript"  th:src="@{/js/order_next_pre.js}"></script>
+    </body>
+</html>
+    
+

@@ -1,0 +1,159 @@
+<!--<!DOCTYPE html>
+
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div id="user_show_all" th:fragment="user_show_all">
+            <div th:if="${users==null}">
+                Không có người dùng
+            </div>
+        
+            <table th:if="${users!=null}">
+                <tr>
+                    <td>STT</td>
+                    <td>Tên</td>
+                    <td>Email</td>
+                    <td>Mật khẩu</td>
+                    <td>Ngày sinh</td>
+                    <td>Giới tính</td>
+                    <td>SDT</td>
+                    <td>Sửa</td>
+                </tr>
+                <tr th:each="user,i : ${users}">
+                    <td th:text="${i.count}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${#dates.format(user.dob,'d-M-yyyy')}"></td>
+                    <td th:text="${user.gender==0?'Nam':'Nữ'}"></td>
+                    <td th:text="${user.phone}"></td>
+                     <td><a th:href="@{/admin/dish/update_dish/{id}(id=${dish.id})}">Sửa</a></td> 
+                </tr>
+                
+            </table>
+            <a th:href="@{/admin/user/create}">Tạo tài khoản</a>
+        </div>
+    </body>
+</html>-->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <title>Quản lý người dùng</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/thai/css/bootstrap1.min.css}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+        <!-- Custom styles for this template -->
+        <link th:href="@{/thai/css/manage-accounts.css}" rel="stylesheet"/>
+    </head>
+
+    <body class="fixed-nav" id="page-top">
+      
+        <th:block th:replace="user/admin_left ::admin_left"></th:block>   
+
+        <div class="content-wrapper py-3">
+            <div class="container-fluid">
+
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Quản lý người dùng</li>
+            <!-- <li class="breadcrumb-item active">fkafj</li> -->
+        </ol>
+
+        <!-- Tables Accounts -->
+        <div class="card mb-3">
+          <div class="card-header">
+                <i class="fa fa-table"></i>
+                Danh Sách Tài Khoản
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th class="text-center">STT</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Số điện thoại</th>
+                    <th class="text-center">Sửa</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                    <tr th:each="user,i : ${users}">
+                        <td class="text-center" th:text="${i.count}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.password}"></td>
+                        <td th:text="${#dates.format(user.dob,'d-M-yyyy')}"></td>
+                        <td th:text="${user.gender==0?'Nam':'Nữ'}"></td>
+                        <td th:text="${user.phone}"></td>
+                        <td class="text-center">
+                            <form action="#" th:action="@{/admin/user/update}" method="POST">
+                                <input type="hidden" name="userEmail" th:value="${user.email}"/>
+                                <input class="btn btn-primary" 
+                                       type="submit" value="Sửa"/>
+                            </form>
+                        </td> 
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+            <div class="card-footer big text-muted">
+                <a class="btn btn-primary" href="#" role="button">Thêm tài khoản</a>
+            </div></div>
+
+        <div class="mastfoot text-center">
+            <div class="inner">
+              <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div></div>
+
+      </div><!-- /.container-fluid --></div><!-- /.content-wrapper -->
+
+    <th:block th:replace="user/admin_bottom ::admin_bottom"></th:block>  
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/thai/js/popper.min.js}"></script>
+    <script th:src="@{/thai/js/bootstrap.min.js}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script th:src="@{/thai/js/jquery.easing.min.js}"></script>
+    <script th:src="@{/thai/js/jquery.dataTables.js}"></script>
+    <script th:src="@{/thai/js/dataTables.bootstrap4.js}"></script>
+    
+    <!-- Custom scripts for this template -->
+    <script th:src="@{/thai/js/sb-admin.min.js}"></script>
+    <script th:src="@{/thai/js/add-new-food.js}"></script>
+  </body>
+</html>

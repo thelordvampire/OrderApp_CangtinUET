@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>
+<!--        <div th:fragment="fast_dish_detail" 
+             style="background-color: grey; width: 500px; height: 300px;">
+            <img th:src="${dish.image_link_to_show}" style="width: 50px; height: 50px;"/>
+            <p th:text="${dish.name}"></p>
+            <p th:text="${dish.infor}"></p>
+        </div>-->
+
+        <div th:fragment="fast_dish_detail" >
+            <div class="card" style="width: 30rem;">
+                <img th:src="${dish.image_link_to_show}" class="card-img-top" style="width: 30rem; height: 20rem;"/>
+                <div class="card-body">
+                    <h4 th:text="${dish.name}" class="card-title"></h4>
+                    <p th:text="${dish.infor}" class="card-text" 
+                       style="max-height: 80px; overflow: hidden;"></p>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+<!--    <div th:fragment="fast_dish_detail" class>
+    
+    <link th:href="@{/thai/css/fast_dish_detail.css}" rel="stylesheet"/>
+         <div class="container">
+            
+            <div
+                 class="card" style="width: 20rem;">
+                
+                
+                
+                <img class="card-img-top" th:src="${dish.image_link_to_show}" />
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${dish.name}"></h4>
+                    <p class="card-text" th:text="${dish.infor}"></p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+        
+    </body>
+</html>

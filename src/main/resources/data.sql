@@ -1,0 +1,161 @@
+
+
+-- 
+-- insert into `role`(id,`type`) 
+-- values(1,'ROLE_Emp'),
+--         (2,'ROLE_Admin');
+--  
+-- insert into `user`(`name`, email, `password`, dob, gender, phone, role_id) 
+-- values('Nguyễn Ngọc Bảo','bao@vnu', '123456', '1993/8/28', 0, '123456789', 1),
+--         ('Nguyễn Thái Sơn','son@vnu', '123456', '1993/8/28', 0, '123456789', 1);
+
+
+-- insert into `user`(`name`, email, `password`, dob, gender, phone, role_id) 
+-- values('Tổng Giám Đốc','admin@vnu', '123456', '1993/8/28', 0, '123456789', 2);
+
+-- 
+-- insert into dishgroup(`name`) values('Món chính'), ('Món thịt'), ('Món rau'), ('Món cá'),('Món tráng miệng');
+-- insert into dish(`name`, infor, image_path) values   
+-- ('Cá kho', ''), 
+-- ('Gà rán'), 
+-- ('Rau xào'), 
+-- ('Thịt luộc'),
+-- ('Táo'); 
+-- image_path = /image/dish/
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/9', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/9', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/9', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/9', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/9', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/10', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/10', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/10', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/10', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/11', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/11', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/11', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/11', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/12', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/12', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/12', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/13', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/13', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/13', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/14', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/14', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/14', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/14', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/15', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/15', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/15', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/15', 3);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/16', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/16', 4);
+
+
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/17', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/17', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/17', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/18', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/18', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/18', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/18', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/18', 4);
+
+update dailymenu set active=true where menu_day='2017/8/18';
+
+-- insert into dailymenu(menu_day, active) values('2017/8/19', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/19', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/19', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/19', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/19', 4);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/20', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/20', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/20', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/20', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/20', 4);
+
+-- insert into dailymenu(menu_day, active) values('2017/8/21', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/21', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/21', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/21', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/21', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/21', 5);
+-- 
+
+
+-- insert into dailymenu(menu_day, active) values('2017/8/22', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/22', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/22', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/22', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/22', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/22', 5);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/23', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/23', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/23', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/23', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/23', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/23', 5);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/24', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/24', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/24', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/24', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/24', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/24', 5);
+
+-- insert into dailymenu(menu_day, active) values('2017/8/25', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/25', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/25', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/25', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/25', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/25', 5);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/26', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/26', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/26', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/26', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/26', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/26', 5);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/27', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/27', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/27', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/27', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/27', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/27', 5);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/28', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/28', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/28', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/28', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/28', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/28', 5);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/29', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/29', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/29', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/29', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/29', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/29', 5);
+-- 
+-- insert into dailymenu(menu_day, active) values('2017/8/30', true);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/30', 1);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/30', 2);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/30', 3);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/30', 4);
+-- insert into dailymenu_dish(menu_day, dish_id) values('2017/8/30', 5);
+
+select * from `user`;

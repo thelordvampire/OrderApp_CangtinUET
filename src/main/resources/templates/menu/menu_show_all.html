@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+         <!-- Bootstrap core CSS -->
+    <link th:href="@{/thai/css/bootstrap1.min.css}" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    
+    <!-- Custom styles for this template -->
+    <link th:href="@{/thai/css/show-all-menu.css}" rel="stylesheet"/>
+        
+    </head>
+    
+    <body class="fixed-nav" id="page-top">
+
+    <th:block th:replace="user/admin_left ::admin_left"></th:block>   
+
+    <div class="content-wrapper py-3">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Danh sách thực đơn</li>
+        </ol>
+
+        <!-- Tables Card -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Danh sách thực đơn đã tạo:
+          </div>
+            
+          <div class="card-body" style="padding: 1rem 0 0rem 1rem;">
+            <a th:href="@{/admin/menu/create}"><strong>Thêm thực đơn</strong></a>
+          </div>
+            
+        <th:block th:if="${menus==null or #lists.isEmpty(menus)}">
+            Chưa có thực đơn nào
+        </th:block>  
+        <th:block th:if="${menus!=null and not #lists.isEmpty(menus)}">
+            
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th class="text-center">Ngày</th>
+                    <th class="text-center">Trạng Thái</th>
+                    <th class="text-center">Số người đăng ký</th>
+                    <th class="text-center">Kích hoạt</th>
+                    <th class="text-center">Sửa</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <tr th:each="menu : ${menus}">
+                        <td class="text-center" th:text="${#dates.format(menu.day,'yyyy-MM-dd')}"></td>
+                        <td class="text-center" th:text="${menu.active==true?'Đã kích hoạt':'Chưa kích hoạt'}"></td>
+                        <td class="text-center" th:text="${#lists.size(menu.orders)}"></td>
+                        <td class="text-center">
+                            <form action="#" th:action="@{/admin/menu/active}" method="POST"
+                                  th:if="${menu.active==false}">
+                                <input type="hidden" name="menuDay" th:value="${menu.day}"/>
+                                <input class="btn btn-primary"
+                                       type="submit" value="Kích hoạt"/>
+                            </form>
+                            <form action="#" th:action="@{/admin/menu/deactive}" method="POST"
+                                  th:if="${menu.active==true}">
+                                <input type="hidden" name="menuDay" th:value="${menu.day}"/>
+                                <input class="btn btn-danger" 
+                                       type="submit" value="Hủy kích hoạt"/>
+                            </form>
+                        </td>
+                        <td class="text-center">
+                            <!--<a  href="#">Sửa</a>-->
+                            <form action="#" th:action="@{/admin/menu/update}" method="POST">
+                                <input type="hidden" name="menuDay" th:value="${menu.day}"/>
+                                <input class="btn btn-primary" 
+                                       type="submit" value="Sửa"/>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+                
+            </div>
+          </div>
+                
+        </th:block>
+        
+        <div class="card-footer small text-muted">
+            Cập nhật hôm qua lúc 11:59 PM
+          </div>
+        </div>
+
+        <div class="mastfoot text-center">
+            <div class="inner">
+              <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <th:block th:replace="user/admin_bottom ::admin_bottom"></th:block>  
+
+     <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/thai/js/popper.min.js}"></script>
+    <script th:src="@{/thai/js/bootstrap.min.js}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script th:src="@{/thai/js/jquery.easing.min.js}"></script>
+    <script th:src="@{/thai/js/jquery.dataTables.js}"></script>
+    <script th:src="@{/thai/js/dataTables.bootstrap4.js}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script th:src="@{/thai/js/sb-admin.min.js}"></script>
+  </body>
+</html>

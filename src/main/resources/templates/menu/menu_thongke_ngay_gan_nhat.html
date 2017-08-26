@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <th:block th:fragment="menu_thongke_ngay_gan_nhat">
+            <div th:if="${menu!=null}" >
+                <p th:text="${#dates.format(menu.day,'d-M-yyyy')}"></p>
+                <table>
+                     <tr th:each="dish : ${menu.dishes}">
+                         <td><img th:src="${dish.image_link_to_show}" style="border-radius: 50%; width: 50px; height: 50px"/>
+                          </td>
+                          <td><p th:text="${dish.name}"></p>
+                          </td>
+                          <td><p th:text="${dish.countInMenu}"></p>
+                          </td>
+                     </tr>
+                </table>
+                <th:block th:if="${menu.orders ==null or #lists.isEmpty(menu.orders)}">
+                    Chưa có đăng ký ăn nào
+                </th:block>
+                <th:block th:if="${menu.orders !=null and not #lists.isEmpty(menu.orders)}">
+                    Danh sách đăng ký ăn
+                    <table>
+                        <tr th:each="order : ${menu.orders}">
+                            <td th:text="${order.user.name}"></td>
+                            <td th:text="${order.price}"></td>
+                            <td th:text="${order.infor}"></td>
+                        </tr>
+                   </table>
+                </th:block>
+            </div>
+        </th:block>
+    </body>
+</html>

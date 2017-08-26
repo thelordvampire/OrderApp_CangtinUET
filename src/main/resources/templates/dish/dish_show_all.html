@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link th:href="@{/thai/css/bootstrap1.min.css}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link th:href="@{/thai/css/show-all-food.css}" rel="stylesheet"/>
+    </head>
+    <body class="fixed-nav" id="page-top">
+        
+        <th:block th:replace="user/admin_left ::admin_left"></th:block>  
+        
+        <div class="content-wrapper py-3">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Danh sách món ăn</li>
+        </ol>
+
+        <!-- Tables Card -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Danh sách món ăn hiện có:
+          </div>
+          <div class="card-body" style="padding: 1rem 0 0rem 1rem;">
+            <a th:href="@{/admin/dish/create}"><strong>Thêm món ăn</strong></a>
+          </div>
+          <div class="card-body" >
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th class="text-center">Ảnh</th>
+                    <th class="text-center">Tên món ăn</th>
+                    <th class="text-center" style="width: 30rem;">Thông tin</th>
+                    <th class="text-center">Tùy chỉnh</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+<!--                  <tr>
+                    <td class="text-center"><img src="../img/bi-luoc.jpg" alt="" style="width: 5rem;"></td>
+                    <td>Bí luộc</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam, nemo.</td>
+                    <td class="text-center">
+                      <a href="#">Sửa</a>
+                    </td>
+                  </tr>-->
+                  
+                    <tr th:each="dish : ${dishes}">
+                        <td class="text-center">
+                            <img alt="" style="width: 5rem; height: 5rem; 
+                                 border-radius: 50%;" th:src="${dish.image_link_to_show}"/>
+                        </td>
+                        <td th:text="${dish.name}"></td>
+                        <td th:text="${dish.infor}"></td>
+                        <td class="text-center">
+<!--                            <a th:href="@{/admin/dish/update_dish/{id}(id=${dish.id})}">
+                                Sửa
+                            </a>-->
+                            <form action="#" th:action="@{/admin/dish/update}" method="POST">
+                                <input type="hidden" name="dishID" th:value="${dish.id}"/>
+                                <input class="btn btn-primary" 
+                                       type="submit" value="Sửa"/>
+                            </form>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">
+            Cập nhật hôm qua lúc 11:59 PM
+          </div>
+        </div>
+
+        <div class="mastfoot text-center">
+            <div class="inner">
+              <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+    </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         
+        
+<!--        <div id="dish_show" th:fragment="dish_show_all">
+        	<div th:if="${dishes==null}">
+        	Không có món ăn  nào cả
+        	</div>
+        
+            <table th:if="${dishes!=null}">
+                <tr>
+                    <td>Ảnh</td>
+                    <td>Tên</td>
+                    <td>Thông Tin</td>
+                    <td>Sửa</td>
+                </tr>
+                
+                <tr th:each="dish : ${dishes}">
+                    <td><img style="width: 50px; height: 50px;" th:src="${dish.image_link_to_show}"/></td>
+                    <td th:text="${dish.name}"></td>
+                    <td th:text="${dish.infor}"></td>
+                    <td><a th:href="@{/admin/dish/update_dish/{id}(id=${dish.id})}">Sửa</a></td>
+                </tr>
+                
+            </table>
+            <a href="/admin/dish/create">tạo món  ăn</a>
+        </div>-->
+        
+        
+        
+        <th:block th:replace="user/admin_bottom ::admin_bottom"></th:block>  
+        
+        
+        
+          <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/thai/js/popper.min.js}"></script>
+    <script th:src="@{/thai/js/bootstrap.min.js}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script th:src="@{/thai/js/jquery.easing.min.js}"></script>
+    <script th:src="@{/thai/js/jquery.dataTables.js}"></script>
+    <script th:src="@{/thai/js/dataTables.bootstrap4.js}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script th:src="@{/thai/js/sb-admin.min.js}"></script>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,134 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/thai/css/login_style.css}"></link>
+        <link th:href="@{/thai/css/bootstrap.css}" rel="stylesheet"></link>
+        
+        <title>JSP Page</title>
+    </head>
+    <body>
+<!--        <h1>Đây la trang đăng nhập</h1>
+        
+        <div class="container">
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form th:action="@{/user/login}" method="post">
+                <fieldset>
+                    
+                     <p th:if="${error}" class="error">Sai email hoặc mật khẩu</p>
+        <p th:if="${logout}" class="success">You have been logged out</p>
+
+                    <div class="form-group">
+                        <input type="text" name="username" id="email" class="form-control input-lg"
+                               placeholder="UserName" required="true" autofocus="true"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control input-lg"
+                               placeholder="Password" required="true"/>
+                    </div>
+                    
+                    <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Đăng nhập"/>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>-->
+        
+        <div id="container">
+        <div id="header">
+            <img th:src="@{/thai/Img/uet_logo1.png}" alt=""/>
+            <p><span>CĂNG TIN</span><br/>TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐHQGHN</p>
+        </div>
+        <div id="content">
+            <h1 id="welcome"></h1>
+            <section id="form_before_lounch">
+                <p>Log In</p>
+                <form th:action="@{/user/login}" method="post" id="form">
+                    <div>
+<!--                    <div>
+                            <input type="text" id="user_name" placeholder="Username: "/>
+                        </div>-->
+                        
+                        <div >
+                            <input type="text" name="username" id="email"
+                               placeholder="UserName" required="true" autofocus="true"/>
+                        </div>
+<!--                        <div>
+                                <input type="password" id="password" placeholder="Password: "/>
+                            </div>-->
+                        <div>
+                            <input type="password" name="password" id="password"
+                                placeholder="Password" required="true"/>
+                        </div>
+                    
+                        <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <div id="btn">
+                            <input type="submit" id="submit" value="Đăng nhập" />
+                        </div>
+                    </div>
+                </form>
+            </section>
+            
+            
+<!--            <section id="form_before_lounch">
+                <p>Log In</p>
+                <form action="" id="form" onsubmit="return false">
+                    <div>
+                        <div>
+                            <input type="text" id="user_name" placeholder="Username: "/>
+                        </div>
+                        <div>
+                            <input type="password" id="password" placeholder="Password: "/>
+                        </div>
+                        <div id="btn">
+                            <input type="submit" id="submit" value="Log In" />
+                        </div>
+                    </div>
+                </form>
+            </section>-->
+        </div>
+        <div id="footer">
+            <p >144 Xuân Thủy - Cầu Giấy - Hà Nội</p>
+        </div>
+    </div>
+        
+<script type="text/javascript" th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#form_before_lounch").click(function(){
+            $(this).animate({height: "250px", width: "400px"});
+            $(this).children("p").animate({fontSize: "25px"});
+            $("#form").delay(300).fadeIn();
+        });
+
+        $("#submit").click(function(){
+            var email = $("#email").val();
+            var password = $("#password").val();
+
+            if(email !==""){
+                        if(password !== ""){
+                $("#form_before_lounch").fadeOut();
+                $("h1").fadeIn();
+                $("h1").html("Welcome "+email);
+                $("#welcome").animate({marginTop: "50px"});
+            }}
+        });
+    });
+</script>
+        
+        
+    </body>
+</html>
+    

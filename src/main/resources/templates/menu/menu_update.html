@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        
+          <!-- Bootstrap core CSS -->
+    <link th:href="@{/thai/css/bootstrap1.min.css}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    
+    <!-- Custom styles for this template -->
+    <link th:href="@{/thai/css/create-menu.css}" rel="stylesheet"/>
+    
+    <link rel="stylesheet" type="text/css" 
+              th:href="@{/css/jquery.flexdatalist.min.css}" />
+    
+    <!--<link th:href="@{/thai/css/show-all-menu.css}" rel="stylesheet"/>-->
+        
+        
+    </head>
+
+    <body class="fixed-nav" id="page-top">
+
+    <!-- Navigation -->
+     <th:block th:replace="user/admin_left ::admin_left"></th:block>   
+
+    <div class="content-wrapper py-3">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Sửa thực đơn</li>
+        </ol>
+        
+        
+        <!-- List of Foods -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-plus"></i>
+            Sửa thực đơn:
+          </div>
+            
+          <div class="card-header">
+                <h5>Nhập ngày và danh sách các món ăn để tạo thực đơn</h5>
+                <p><small></small></p>
+                <form action="#" th:action="@{/admin/menu/update_action}" th:object="${menu}" method="post">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationServer01">Nhập ngày:</label>
+                    
+                    <input type="date" class="form-control is-valid" 
+                           style="width: 10rem;" th:value="${menu.day}" 
+                           th:field="*{day}" readonly="true" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationServer01">Tên món ăn:</label>
+                    <!--<input type="text" class="form-control is-valid" id="" placeholder="Tên món ăn..."/>-->
+                    
+                    <!--<div style="width: 500px; border: solid red 1px;">-->
+                    <input placeholder='Nhập món ăn'
+                           class='dishAutocomplete form-control is-valid'
+                           data-min-length='1'
+                           multiple='multiple'
+                           data-selection-required='1'
+                           type='text' th:field="*{dishes}"/>
+<!--                        <input type="button" value="Xem kết quả" id="TestAutocomplete"/>-->
+                <!--</div>-->
+                  </div>
+<!--                  <div class="col-md-6 mb-3">
+                    <button type="button" class="btn btn-secondary" id="add-food">Tạo</button>
+                  </div>-->
+                    
+                    
+<!--                    <p th:errors="*{day}"></p>
+                    <p th:errors="*{dishes}"></p>-->
+
+        <th:block th:if="${error=='yes'}">       
+            <div  id="ErrorModel">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title" style="color: red;"><strong>Lỗi:</strong></h5>
+                       <button type="button" class="close" onclick="hideCard()">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                     </div>
+                     <div class="modal-body">
+                           <p th:errors="*{day}"></p>
+                           <p th:errors="*{dishes}"></p>
+                     </div>
+                   </div>
+                 </div>
+             </div>
+                    
+                    
+          </th:block>   
+                    
+                    
+                    
+                    
+
+                    <br/>
+                    <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <div class="col-md-6 mb-3">
+                        <input type="submit" value="Xác nhận" 
+                               class="btn btn-secondary" id="add-food"/>
+                    </div>
+                </form>
+          </div>
+        </div> 
+
+        <hr class="mt-2">
+
+        <div class="card mb-3">
+              <div class="card-header">
+                <p>Nhập tên <strong>các</strong> món ăn vào form tạo thực đơn để tạo món danh sách các thực đơn</p>
+                
+              </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-8">
+            <hr class="mt-2">
+          </div>
+        </div>
+
+        <div class="mastfoot text-center">
+            <div class="inner">
+              <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+     <th:block th:replace="user/admin_bottom ::admin_bottom"></th:block>  
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/thai/js/popper.min.js}"></script>
+    <script th:src="@{/thai/js/bootstrap.min.js}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script th:src="@{/thai/js/jquery.easing.min.js}"></script>
+    
+<!--    <script th:src="@{/thai/js/jquery.dataTables.js}"></script>
+    <script th:src="@{/thai/js/dataTables.bootstrap4.js}"></script>-->
+
+    <!-- Custom scripts for this template -->
+    <script th:src="@{/thai/js/sb-admin.min.js}"></script>
+    <script th:src="@{/thai/js/create-menu.js}"></script>
+    
+    <script type="text/javascript" 
+        th:src="@{/thai/js/error.js}"></script>
+    
+    <script type="text/javascript"
+        th:src="@{/js/autocomplete_dish.js}"></script>
+        
+    <script type="text/javascript"
+        th:src="@{/js/jquery.flexdatalist.min.js}"></script>
+    
+  </body>
+
+
+
+
+</html>

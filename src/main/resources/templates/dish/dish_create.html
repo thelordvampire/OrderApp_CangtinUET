@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <title>Tạo Món Ăn Mới</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/thai/css/bootstrap1.min.css}" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+        <!-- Custom styles for this template -->
+        <link th:href="@{/thai/css/show-all-food.css}" rel="stylesheet"/>
+    
+    </head>
+    
+    <body class="fixed-nav" id="page-top">
+        
+        <th:block th:replace="user/admin_left ::admin_left"></th:block> 
+
+
+
+<!--<div th:fragment="form_create_dish">
+
+		<form method="POST" action="#" th:action="@{/admin/dish/create}" th:object="${new_dish}" enctype="multipart/form-data">
+		    <input type="file" name="file"/><br/><br/>
+		    <table style="width:100%">
+			  <caption>Monthly savings</caption>
+			  <tr>
+			    <td>Tên Món Ăn</td>
+			    <td><input type="text" name="name_dish" th:field="*{name}"/><br/><br/></td>
+			  </tr>
+			  <tr>
+			    <td>Mô tả</td>
+			    <td><textarea rows="5" cols="20" name="description_dish" th:field="*{infor}"></textarea></td>
+			  </tr>
+			</table>
+		    <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		    <input type="submit" value="Submit" />
+		</form>
+
+</div>-->
+
+
+        <div class="content-wrapper py-3">
+
+              <div class="container-fluid">
+
+                <!-- Breadcrumbs -->
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active">Tạo món ăn</li>
+                </ol>
+
+                
+                 <!-- ROW -->
+        <div class="row">
+            <div class="col-lg-7">
+                <!-- Foods list -->
+                <div class="card mb-3">
+
+                  <div class="card-header">
+                    <h5>Thêm món ăn:</h5>
+                    <form method="POST" action="#" th:action="@{/admin/dish/create}" 
+                          th:object="${new_dish}" enctype="multipart/form-data">
+                        <div class="col-md-10 mb-3">
+                          <label for="validationServer01">Tên món ăn:</label>
+                          
+                          <input name="name_dish" th:field="*{name}" 
+                                 type="text"  class="form-control is-valid" 
+                                 id="" placeholder="Tên món ăn..."/>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                          <label for="validationServer02">Mô tả:</label>
+                          <!--<textarea class="form-control is-valid" id="" placeholder="Mô tả..."></textarea>-->
+                          
+                          <textarea rows="5" cols="20" name="description_dish" th:field="*{infor}"
+                              class="form-control is-valid" id="" placeholder="Mô tả...">
+                          </textarea>
+                          
+                          
+                        </div>
+                        
+                        
+                        
+                        
+<!--                        <div class="col-md-6 mb-3">
+                          <label>Thêm ảnh:</label><br/> 
+                          <label class="custom-file">
+                            <input type="file" id="file2" class="custom-file-input">
+                            
+                            <input id="file2" class="custom-file-input" 
+                                   type="file" name="file"/>
+                            
+                            <span class="custom-file-control"></span>
+                          </label>
+                        </div>-->
+                        
+                        
+                        
+                        
+                        <div class="col-md-6 mb-3">
+                  <label>Thêm ảnh:</label><br/> 
+                  <label class="custom-file" style="width: 18rem; overflow: hidden;">
+                    <input name="file" type="file" id="file2" accept="image/*" onchange="loadFile(event)" class="custom-file-input">
+                    <span class="custom-file-control"></span>
+                  </label>
+                </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <th:block th:if="${error=='yes'}">       
+                            <div  id="ErrorModel">
+                                 <div class="modal-dialog">
+                                   <div class="modal-content">
+                                     <div class="modal-header">
+                                       <h5 class="modal-title" style="color: red;"><strong>Lỗi:</strong></h5>
+                                       <button type="button" class="close" onclick="hideCard()">
+                                         <span aria-hidden="true">&times;</span>
+                                       </button>
+                                     </div>
+                                     <div class="modal-body">
+                                           <p th:errors="*{name}"></p>
+                                           <p th:errors="*{fileError}"></p>
+                                     </div>
+                                   </div>
+                                 </div>
+                             </div>
+                          </th:block>   
+                        
+                        
+                        
+                        
+                        <div class="col-md-6 mb-3">
+                          <!--<button type="button" class="btn btn-secondary" id="add-food">Thêm</button>-->
+                          
+                            <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <input class="btn btn-secondary" id="add-food" 
+                                type="submit" value="Thêm" />
+                        </div>
+                    </form>
+                  </div>
+                </div>
+                
+                
+                
+                
+              <hr class="mt-2">
+            
+          </div>
+
+          <div class="col-lg-5">
+
+            <!-- Notifications Card -->
+            <div class="card mb-3 text-center">
+
+              <div class="card-header">
+                <strong>Preview Picture</strong>
+                <img id="output" style="width: 24rem; margin: 1rem auto" />
+              </div>
+            </div>
+          </div>
+        </div>
+                
+                
+                
+
+                <div class="row">
+
+                  <div class="col-lg-8">
+                    <hr class="mt-2">
+                  </div>
+                </div>
+
+                <div class="mastfoot text-center">
+                    <div class="inner">
+                      <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                    </div>
+                </div>
+
+              </div>
+              <!-- /.container-fluid -->
+
+            </div>
+
+
+        
+        <th:block th:replace="user/admin_bottom ::admin_bottom"></th:block>  
+        
+        
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/thai/js/popper.min.js}"></script>
+    <script th:src="@{/thai/js/bootstrap.min.js}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script th:src="@{/thai/js/jquery.easing.min.js}"></script>
+    <script th:src="@{/thai/js/jquery.dataTables.js}"></script>
+    <script th:src="@{/thai/js/dataTables.bootstrap4.js}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script th:src="@{/thai/js/sb-admin.min.js}"></script>
+    <script type="text/javascript" th:src="@{/thai/js/add-new-food.js}"></script>
+    
+    <script type="text/javascript" 
+        th:src="@{/thai/js/error.js}"></script>
+
+</body>
+</html>

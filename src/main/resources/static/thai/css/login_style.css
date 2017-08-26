@@ -1,0 +1,141 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	
+	/*background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('../img/Login_background2.jpg');*/
+	background: url('../img/Login_background2.jpg') no-repeat center center fixed;
+	background-size: 100% 100%;
+	opacity: 0.9;
+}
+
+#container{
+	width: 800px;
+	margin: 0 auto;
+	padding: 0 auto;
+	height: 580px;
+	background-color: rgba(219, 220, 221, 0.7);
+}
+
+	#container>#header{
+		/*border: 1px solid red;*/
+		width: 500px;
+		margin: 0px auto;
+		margin-top: 2em;
+		text-align: center;
+	}
+
+	#header>img{
+		width: 150px;
+		margin-top: 3em;
+	}
+
+	#header>p{
+		font-size: 25px;
+		font-weight: bold;
+		margin: 20px auto 10px auto;
+	}
+
+	#header>p>span{
+		font-size: 40px;
+	}
+
+/*body > h1{
+	color: white;
+	text-align: center;
+	display: none;
+}*/
+
+	#welcome{
+		color: #000000;
+		font-weight: bold;
+		text-align: center;
+	}
+
+#form_before_lounch{
+	width: 120px;
+	height: 35px;
+	background: #333;
+	position: absolute;
+	left: 50%;
+	top: 65%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+#form_before_lounch>div{
+	color: white;
+	text-align: center;
+	display: none;
+	border: 1px solid red;
+}
+
+#form_before_lounch> p{
+	text-align: center;
+	color: white;
+	font-family: sans-serif;
+	line-height: 35px;
+	cursor: pointer;
+	font-size: 22px;
+}
+
+#form{
+	width: 350px;
+	height: 200px;
+	margin: 0px auto;
+	margin-top: 5px;
+	display: none;
+}
+
+#form > div > div{
+	width: 250px;
+	height: 40px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	margin-top: 15px;
+}
+
+#form >div>div>input{
+	width: 250px;
+	height: 35px;
+	background: transparent;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 20px;
+}
+
+/*#btn{
+	width: 120px !important;
+	height: 35px !important;
+	margin: 0 auto !important;
+}
+
+#btn>input{
+	width: 120px !important;
+	height: 35px !important;
+}*/
+
+#form>div>#btn{
+	width: 120px;
+	height: 35px;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+#form>div>#btn>#submit{
+	width: 120px;
+	height: 35px;
+}
+
+#container>#content{
+}
+
+#container>#footer{
+	margin-top: 200px;
+}
+
+#container>#footer>p{
+	font-weight: bold;
+	text-align: center;
+}

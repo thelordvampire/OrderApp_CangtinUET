@@ -1,0 +1,125 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <th:block th:fragment="EditOrderForm" th:if="${order !=null}">
+            <div class="text-center">
+                <button onclick="orderPrevious()">
+                    <img th:src="@{/thai/Img/previous.png}" alt="" />
+                </button>
+                <label class="text-center" style="display: inline-block">
+                    Ngày 
+                    <strong>
+                        <span th:text="${#dates.format(order.day,'d-M-yyyy')}"
+                        name="day" id="day"></span>
+                    </strong>
+                </label>
+                <button onclick="orderNext()">
+                    <img th:src="@{/thai/Img/next.png}" alt="" />
+                </button>
+            </div>
+            <hr/>
+            
+<!--            <div>
+                <button id="previous-bt" onclick="orderPrevious()"><img th:src="@{/thai/Img/previous.png}" alt="" /></button>
+                <button onclick="orderNext()"><img th:src="@{/thai/Img/next.png}" alt="" /></button>
+            </div>
+            
+            <p class="text-center"  th:text="${#dates.format(order.day,'d-M-yyyy')}" name="day" id="day"></p>-->
+           
+            
+            <input type="hidden" id="orderDay" th:value="${order.day}" />
+            
+<!--            <table>
+                <tr>
+                    <td>Tên</td>
+                    <td>Thông tin</td>
+                    <td>Chọn</td>
+                </tr>
+                <tr th:each="dish : ${order.menu.dishes}">
+                    <td th:text="${dish.name}"></td>
+                    <td th:text="${dish.infor}"></td>
+                    <td> 
+                            <input type="checkbox" name="dishes" th:value="${dish.id}" 
+                                th:checked="${#lists.contains(order.dishes, dish)}"/>                
+                
+                         <input type="checkbox" th:value="${dish}" 
+                                th:field="*{order.dishes}" th:checked="${true}"/>
+                        <input type="hidden" th:name="${dish}" th:value="${dish.id}"/>
+                    </td>
+                </tr>
+            </table>
+            <input type="radio" name="price" value="20000" th:field="*{order.price}" th:checked="${true}"/> 20000
+            <input type="radio" name="price" value="30000" th:field="*{order.price}" th:checked="${true}"/> 30000
+            <input type="radio" name="price" value="40000" th:field="*{order.price}" th:checked="${true}"/> 40000
+            <br/>
+            <textarea placeholder="Thời gian, địa điểm" name="infor" th:text="${order.infor}"></textarea>
+            <div class="text-center" id="message"></div>
+            
+            <input type="hidden" id="orderDay" th:value="${order.day}" />
+        
+            <input type="button" id="btnOrderUpdate" value="Sửa" onclick="order_update()" />
+            <input type="button" id="btnOrderDelete" value="Xóa" onclick="order_delete()" />-->
+            
+            Thực đơn gồm có:
+            <br/>
+            
+            <div th:each="dish : ${order.menu.dishes}" 
+                 th:style="${#lists.contains(order.dishes, dish) ? 'width: 200px; display: 
+                 inline-block; border-bottom: solid red 3px;'
+                 : 'width: 200px; display: inline-block;'}" class="DetailMenuDish">
+                <img th:src="${dish.image_link_to_show}" style="border-radius: 50%; width: 50px; height: 50px;"/>
+                <span th:text="${dish.name}"></span>
+                
+<!--                <input type="checkbox" name="dishes" th:value="${dish.id}" 
+                                th:checked="${#lists.contains(order.dishes, dish)}"/>   -->
+                <input type="hidden" name="dishHidden" th:value="${dish.id}"/>
+            </div>
+            
+                
+            <div style="display: none;" class="fast_dish_detail">abc</div>
+            <br/>            
+            <div class="radio text-center">
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="20000" th:field="*{order.price}" th:checked="${true}"/> Suất 20.000
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="25000" th:field="*{order.price}" th:checked="${true}"/> Suất 25.000
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="30000" th:field="*{order.price}" th:checked="${true}"/> Suất 30.000
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="price" value="40000" th:field="*{order.price}" th:checked="${true}"/> Suất 40.000
+                </label>
+            </div>
+            
+            <div class="prevent-overflow">
+                <div class="col-md-6 mb-3" id="test">
+                    <label for="validationServer01">Ghi chú</label>
+                    <textarea class="form-control is-valid"  placeholder="Thời gian, địa điểm" name="infor"
+                              th:text="${order.infor}"></textarea>
+                </div>
+                <div class="text-center" id="message"></div>
+                <br/>
+                
+                <input class="btn" type="button" id="btnOrderUpdate" value="Sửa" onclick="order_update()" />
+                <input class="btn" type="button" id="btnOrderDelete" value="Xóa" onclick="order_delete()" />
+                
+            </div>
+            
+<!--                <script type="text/javascript"
+            th:src="@{/webjars/jquery/2.2.4/jquery.min.js}"></script>-->
+
+            <script type="text/javascript"  th:src="@{/js/order_update.js}"></script>
+            <script type="text/javascript"  th:src="@{/js/create_order_message.js}"></script>
+            <script type="text/javascript"  th:src="@{/js/order_delete.js}"></script>
+            <script type="text/javascript"  th:src="@{/js/show_fast_dish_detail.js}"></script>
+            <script type="text/javascript"  th:src="@{/js/choose_dish.js}"></script>
+            
+        </th:block>
+    </body>
+</html>

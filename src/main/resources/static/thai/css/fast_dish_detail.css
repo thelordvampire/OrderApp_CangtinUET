@@ -1,0 +1,15 @@
+.container{
+	text-align: center;
+}
+
+.card{
+	margin: 0 auto;
+	/*background: rgba(45, 45, 45, 0.5);*/
+	background: #837a7b;
+	color: #fff;
+}
+
+.card-body{
+	
+	padding: 0.6rem 0 0.3rem 0;
+}

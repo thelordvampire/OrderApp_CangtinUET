@@ -1,0 +1,72 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Đây la trang tạo tài khoản người dùng</h1>
+        
+        <form action="#" th:action="@{/user/create}" th:object="${user}" method="POST">
+		<table>
+                    <tr>
+                        <td>Tên:</td>
+                        <td><input type="text" th:field="*{name}" /></td>
+                        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Title error message</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="text" th:field="*{email}" /></td>
+                        <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Content error message</td>
+                    </tr>
+                    <tr>
+                        <td>Mật khẩu:</td>
+                        <td><input type="text" th:field="*{password}" /></td>
+                        <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Content error message</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày sinh:</td>
+                        <td><input type="text" th:field="*{dob}" /></td>
+                        <td th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">Content error message</td>
+                    </tr>
+                    <tr>
+                        <td>Giới tính</td>
+                        <td>
+                            <select>
+                                <option value="0">Nam</option>
+                                <option value="1" >Nữ</option>
+                            </select>
+                        </td>
+                        <td th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Content error message</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>SDT:</td>
+                        <td><input type="text" th:field="*{phone}" /></td>
+                        <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Content error message</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Phân quyền</td>
+                        <td>
+                            <select th:field="${roles}">
+                                <option th:each="role : ${roles}"
+                                        th:value="${role.id}"
+                                        th:text="${role.type}">abc</option>
+                                
+                            </select>
+                        
+                        </td>
+                        <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Content error message</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><input type="submit" value="Xác nhận"/></td>
+                    </tr>
+		</table>
+	</form>
+
+    </body>
+</html>
+    
+

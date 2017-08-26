@@ -1,0 +1,168 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Thực đơn</title>
+        
+<!--        <link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />-->
+        
+        <link rel="stylesheet" type="text/css" 
+              th:href="@{/css/jquery.flexdatalist.min.css}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    
+        <!-- Custom styles for this template -->
+
+        <link th:href="@{/thai/css/sb-admin.css}" rel="stylesheet"/>
+        <link th:href="@{/thai/css/show-all-menu.css}" rel="stylesheet"/>
+        <link th:href="@{/thai/css/bootstrap1.min.css}" rel="stylesheet"/>
+        
+    </head>
+<body class="fixed-nav" id="page-top">
+<!--    Now is: <b th:text="${execInfo.now.time}"></b>
+	<br/>
+        Xin chào admin
+        <form action="#" th:action="@{/user/logout}" method="POST">
+                <input type="submit" value="Đăng xuất"/>
+            </form>
+        <br/>
+        
+        <span sec:authorize="isAuthenticated()">
+            
+            
+            <div id="leftDIV" style="display: inline-block">
+                <a href="/user/create">Quản lý người dùng</a>
+                <br/>
+                <a href="/admin/dish">Quản lý món ăn</a>
+                <br/>
+                <a href="/admin/menu">Quản lý thực đơn</a>
+                <br/>
+                <a href="/admin/menu/thongke">Thống kê thực đơn</a>
+                
+            </div>
+            
+            <div id="mainDIV" style="display: inline-block">
+                <th:block th:if="${page=='default'}" >
+                    <th:block th:replace="menu/menu_thongke_ngay_gan_nhat ::menu_thongke_ngay_gan_nhat">
+                    </th:block>
+                </th:block>
+                
+                
+                <th:block th:if="${page=='menu_show_all'}" >
+                    <th:block th:replace="menu/menu_show_all ::menu_show_all">
+                    </th:block>
+                </th:block>
+                
+                <th:block th:if="${page=='menu_create'}" >
+                    <th:block th:replace="menu/menu_create ::menu_create">
+                    </th:block>
+                </th:block>
+                
+                <th:block th:if="${page=='menu_thongke'}" >
+                    <th:block th:replace="menu/menu_thongke ::menu_thongke">
+                    </th:block>
+                </th:block>
+                
+            </div>
+            
+            
+            <br/>
+       Logged user: <span   sec:authentication="name"></span> <br/>
+       role: <span sec:authentication="principal.authorities"></span>
+        </span>-->
+
+        <!-- Navigation -->
+    
+        
+        <th:block th:replace="user/admin_left ::admin_left"></th:block>   
+        
+
+    <div class="content-wrapper py-3">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Thực đơn hôm nay</li>
+        </ol>
+        
+        
+        
+        <div id="mainDIV" style="display: inline-block; width: 100%;">
+                <th:block th:if="${page=='default'}" >
+                    <th:block th:replace="menu/menu_thongke_ngay_gan_nhat ::menu_thongke_ngay_gan_nhat">
+                    </th:block>
+                </th:block>
+                
+                
+<!--                <th:block th:if="${page=='menu_show_all'}" >
+                    <th:block th:replace="menu/menu_show_all ::menu_show_all">
+                    </th:block>
+                </th:block>
+                
+                <th:block th:if="${page=='menu_create'}" >
+                    <th:block th:replace="menu/menu_create ::menu_create">
+                    </th:block>
+                </th:block>
+                
+                <th:block th:if="${page=='menu_thongke'}" >
+                    <th:block th:replace="menu/menu_thongke ::menu_thongke">
+                    </th:block>
+                </th:block>-->
+                
+            </div>
+       
+
+        <div class="row">
+
+          <div class="col-lg-8">
+            <hr class="mt-2">
+          </div>
+        </div>
+
+        <div class="mastfoot text-center">
+            <div class="inner">
+              <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+        </div>
+
+      </div>
+      
+    </div>
+        
+        <th:block th:replace="user/admin_bottom ::admin_bottom"></th:block>   
+        
+    
+        
+        
+        
+        <script type="text/javascript" 
+            th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+        <script type="text/javascript"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+        
+        <script type="text/javascript"
+            th:src="@{/js/autocomplete_dish.js}"></script>
+        
+        <script type="text/javascript"
+            th:src="@{/js/jquery.flexdatalist.min.js}"></script>
+        
+         <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" th:src="@{/thai/js/jquery-3.2.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/thai/js/popper.min.js}"></script>
+    <script type="text/javascript" th:src="@{/thai/js/bootstrap.min.js}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script type="text/javascript" th:src="@{/thai/js/jquery.easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/thai/js/dataTables.bootstrap4.js}"></script>
+    <script type="text/javascript" th:src="@{/thai/js/jquery.dataTables.js}"></script>
+    
+    <!-- Custom scripts for this template -->
+    <script type="text/javascript" th:src="@{/thai/js/sb-admin.min.js}"></script>
+    
+
+</body>
+</html>
